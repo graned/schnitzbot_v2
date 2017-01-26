@@ -1,8 +1,9 @@
 const Botkit = require('botkit');
 let bot;
-function start() {
+function start(token) {
   const botController = Botkit.slackbot({ debug: false });
-  bot = botController.spawn({ token:  process.env.SLACK_TOKEN });
+  bot = botController.spawn({ token });
+
   bot.startRTM((err, bot, payload) => {
     if (err) {
       throw new Error(`Could not connect to slack: ${err}`);
