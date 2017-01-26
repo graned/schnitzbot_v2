@@ -18,7 +18,7 @@ app.listen(port, (err) => {
 
   if (config.SLACK_TOKEN) {
     console.log('🤖 The schnitzel bot is alive in port:', port);
-    bot.start();
+    bot.start(config.SLACK_TOKEN);
   } else {
     console.log('SLACK_TOKEN missing! Bot is not alive');
   }
