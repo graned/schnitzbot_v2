@@ -20,10 +20,14 @@ async function createBot(opts = {}, token) {
   botController = Botkit.slackbot(opts);
   botInstance = await connect(spawnBot(botController, token));
   // TODO. Remove exposure of bot controller
-  return { botController, botInstance };
+  return botInstance;
+}
+
+function addHearCommand(commands, recognitionPatterns, fn) {
+  botController.hears(commands, recognitionPatterns, fn);
 }
 
 module.exports = {
   createBot,
-  // addHearCommand,
+  addHearCommand,
 };
